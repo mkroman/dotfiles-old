@@ -1,0 +1,19 @@
+urxvt*depth: 32
+urxvt*background: [50]#141414
+urxvt*foreground: #F2F2F2
+urxvt*scrollBar: false
+urxvt*perl-ext-common:	default,matcher,clipboard
+urxvt*urlLauncher:	/usr/bin/chromium
+urxvt*matcher.button:	1
+urxvt*cursorUnderline:	true
+urxvt*cursorBlink:	true
+urxvt*font:xft:DejaVu Sans Mono:pixelsize=11:antialias=true
+
+urxvt*keysym.Mod4-v: perl:clipboard:paste
+urxvt*keysym.Mod4-c: perl:clipboard:copy
+
+Xft.dpi:        82
+Xft.antialias:  true
+Xft.rgba:       rgba
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
