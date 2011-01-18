@@ -1,0 +1,17 @@
+Config { font = "xft:DejaVu Sans Mono:pixelsize=10"
+       , bgColor = "#141414"
+       , fgColor = "#fffedc"
+       , position = Top
+       , lowerOnStart = False
+       , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run MultiCpu ["-t", "[<fc=#d08356><total0></fc>, <fc=#d08356><total1></fc>]"] 10
+                    , Run Memory ["-t","<fc=#d08356><usedratio>%</fc>"] 10
+                    , Run Com "uname" ["-s","-r"] "" 36000
+    		            , Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+            		    , Run Com "sh" ["~/.bin/mpd.sh"] "mpd" 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "<fc=#e3d796>Workspaces</fc> = [%StdinReader%], <fc=#e3d796>CPU</fc> = %multicpu%, <fc=#e3d796>Memory</fc> = %memory% }{ %mpd%<fc=#e3d796>Date</fc> = <fc=#a2a96f>'%date%'</fc>, <fc=#e3d796>Arch</fc> = <fc=#a2a96f>'%uname%'</fc>"
+       }
