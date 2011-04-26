@@ -1,19 +1,50 @@
-urxvt*depth: 32
-urxvt*background: [50]#141414
-urxvt*foreground: #F2F2F2
-urxvt*scrollBar: false
-urxvt*perl-ext-common:	default,matcher,clipboard
-urxvt*urlLauncher:	/usr/bin/chromium
-urxvt*matcher.button:	1
-urxvt*cursorUnderline:	true
-urxvt*cursorBlink:	true
-urxvt*font:xft:DejaVu Sans Mono:pixelsize=11:antialias=true
-
-urxvt*keysym.Mod4-v: perl:clipboard:paste
-urxvt*keysym.Mod4-c: perl:clipboard:copy
-
+! X font settings
 Xft.dpi:        82
 Xft.antialias:  true
 Xft.rgba:       rgba
 Xft.hinting:    true
 Xft.hintstyle:  hintslight
+
+!Bl1nks colors
+*foreground:#a0a0a0
+*background:#121212
+
+!black
+*color0:    #1B1D1E
+*color8:    #505354
+!red
+*color1:    #F92672
+*color9:    #FF669D
+!green
+*color2:    #A6E22E
+*color10:   #BEED5F
+!yellow
+*color3:    #FD971F
+*color11:   #E6DB74
+!blue
+*color4:    #66D9EF
+*color12:   #66D9EF
+!magenta
+*color5:    #9E6FFE
+*color13:   #9E6FFE
+!cyan
+*color6:    #5E7175
+*color14:   #A3BABF
+!white
+*color7:    #CCCCC6
+*color15:   #F8F8F2
+
+!rxvt-unicode
+urxvt*depth: 32
+urxvt*background: #141414
+urxvt*foreground: #F2F2F2
+urxvt*scrollBar: false
+urxvt*perl-ext-common:	default,matcher,clipboard
+urxvt*urlLauncher:	/usr/bin/firefox
+urxvt*matcher.button:	1
+urxvt*cursorUnderline:	true
+urxvt*cursorBlink:	true
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:antialias=true:hinting=true, xft:Monospace:pixelsize=11:antialias=true:hinting=true:autohint=true
+
+urxvt*keysym.Mod4-v: perl:clipboard:paste
+urxvt*keysym.Mod4-c: perl:clipboard:copy
