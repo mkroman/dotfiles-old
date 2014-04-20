@@ -1,0 +1,10 @@
+# Git aliases
+alias gush="git push"
+alias gushh="git push origin master"
+alias gash="git stash"
+alias gasha="git stash apply"
+alias gush="git push"
+alias gushh="git push origin master"
+alias gul="git pull"
+alias gull="git pull origin master"
+alias ga="git commit --amend"

@@ -1,0 +1,53 @@
+# Awesome configuration.
++ .config/
++ .config/awesome/***
+
+# Mimeo configuration.
++ .config/mimeo.conf
+
+# Tint2 configuration.
++ .config/tint2/***
+
+# OpenBox configuration.
++ .config/openbox/***
+
+# Fontconfig configuration.
++ .config/fontconfig/***
+
+# Sublime text 2 configuration.
++ .config/sublime-text-2/***
+
+# tmux configuration.
++ .tmux.conf
+
+# VIM configuration.
++ .vim/***
++ .vimrc
+
+# ZSH configuration.
++ .zshrc
++ .zsh/***
+
+# GPG configuration.
++ .gnupg/
++ .gnupg/gpg.conf
+
+# Git configuration.
++ .gitconfig
++ .gitignore
+
+# Gem configuration.
++ .gemrc
+
+# GDB configuration.
++ .gdbinit
+
+# X11 configuration.
++ .xsession
++ .Xmodmap
++ .Xdefaults
+
+# Generic shell configuration.
++ .dircolors
+
+# vim: syntax=text
