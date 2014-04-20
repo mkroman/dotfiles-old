@@ -1,0 +1,56 @@
+! {{{ X Font Settings.
+Xft.dpi:        82
+Xft.antialias:  true
+Xft.rgba:       rgba
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
+*font: xft:Meslo LG S DZ for Powerline:size=9:style=RegularForPowerline, \
+       xft:Meslo LG S DZ:size=9:style=Regular, \
+       xft:DejaVu Sans Mono:style=Book:size=9, \
+       xft:DejaVu Sans Mono:style=Book, \
+       xft:Lohit Kannada:style=Regular, \
+       xft:Unifont:style=Medium
+! }}}
+
+! {{{ Jellybeans Colors.
+*background: #151516
+*foreground: #ffffff
+! black
+*color0: #1C1C1C
+*color8: #404040
+! red
+*color1: #B85335
+*color9: #CF6A4C
+! green
+*color2: #799D6A
+*color10: #99AD6A
+! yellow
+*color3: #FFB964
+*color11: #FAD07A
+! blue
+*color4: #667899
+*color12: #8197BF
+! magenta
+*color5: #8787AF
+*color13: #C6B6EE
+! cyan
+*color6: #668799
+*color14: #8FBFDC
+! white
+*color7: #DDDDDD
+*color15: #E8E8D3
+!}}}
+
+! {{{ rxvt-unicode
+URxvt*depth: 32
+URxvt*scrollBar: false
+URxvt*perl-ext-common: default,matcher,clipboard
+URxvt*url-launcher: mimeo
+URxvt*matcher.button: 1
+URxvt*cursorUnderline: false
+URxvt*urgentOnBell: true
+URxvt*cursorBlink: true
+URxvt*keysym.Mod4-v: perl:clipboard:paste
+URxvt*keysym.Mod4-c: perl:clipboard:copy
+! }}}

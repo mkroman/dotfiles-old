@@ -1,0 +1,11 @@
++ /etc
+
+# Makepkg configuration.
++ /etc/makepkg.conf
+
+# Pacaur configuration.
++ /etc/xdg
++ /etc/xdg/pacaur
++ /etc/xdg/pacaur/config
+
+# vim: syntax=text

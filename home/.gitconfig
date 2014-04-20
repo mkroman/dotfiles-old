@@ -1,0 +1,44 @@
+[user]
+	name = Mikkel Kroman
+	email = mk@uplink.io
+[color]
+	ui = auto
+	interactive = auto
+	diff = auto
+	branch = auto
+	status = auto
+[github]
+	user = mkroman
+[core]
+	excludesfile = /home/mk/.gitignore
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 0x0+0+0
+	history-view-vpane-position = 584
+	file-view-vpane-position = 946
+	main-window-view = HistoryView
+	show-graph = true
+[alias]
+	a = add -A .
+	br = branch
+	ci = commit -a
+	co = checkout
+	df = diff
+	dwc = diff -w -M --color-words
+	lg = log
+	ll = log -p
+	rb = rebase
+	fix = rebase -i origin/master
+	rbc = rebase --continue
+	re = remote
+	st = status
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
+  up = pull --rebase
+  amend = commit --amend
+[log]
+	decorate = short
+[pager]
+	status = true
+	show-branch = true
+[format]
+	numbered = auto
