@@ -53,3 +53,9 @@ fi
 if [ -e ~/.dircolors ]; then
   eval "$(dircolors)"
 fi
+
+# Load zsh-syntax-highlighting.
+syntax_highlighting="${ZDOTDIR:-$HOME/.zsh}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+if [ -e ${syntax_highlighting} ]; then
+  source ${syntax_highlighting}
+fi
