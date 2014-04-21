@@ -8,4 +8,4 @@
 + /etc/xdg/pacaur
 + /etc/xdg/pacaur/config
 
-# vim: syntax=text
+# vim: ft=text

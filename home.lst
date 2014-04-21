@@ -51,4 +51,4 @@
 # Generic shell configuration.
 + .dircolors
 
-# vim: syntax=text
+# vim: ft=text
