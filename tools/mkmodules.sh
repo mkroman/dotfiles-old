@@ -41,7 +41,7 @@ submodule_add() {
   remote_origin=$1
   submodule_path=$2
 
-  git submodule add ${remote_origin} ${submodule_path} 2> /dev/null
+  git submodule add ${remote_origin} ${submodule_path}
 }
 
 echo "Adding submodules.."
