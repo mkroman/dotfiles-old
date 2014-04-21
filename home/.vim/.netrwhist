@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/mk/.zsh/aliases'
-let g:netrw_dirhist_2='/home/mk/Projects/Streams/app/controllers'
-let g:netrw_dirhist_3='/home/mk/Projects/RemoteMessages/thirdparty/qtwebsocket/QtWebsocket'
