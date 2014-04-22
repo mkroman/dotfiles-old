@@ -51,4 +51,11 @@
 # Generic shell configuration.
 + .dircolors
 
+# rbenv installation.
++ .rbenv/
++ .rbenv/.git/***
++ .rbenv/plugins/
++ .rbenv/plugins/*
++ .rbenv/plugins/*/.git/***
+
 # vim: ft=text
