@@ -25,6 +25,21 @@
 # promote the sale, use or other dealings in this Software without prior
 # written authorization.
 
+# Print message in green
+status_ok() {
+  echo "\e[32m$*\e[0m"
+}
+
+# Print message in red
+status_error() {
+  echo "\e[31m$*\e[0m"
+}
+
+# Print message in blue
+status_info() {
+  echo "\e[35m$*\e[0m"
+}
+
 # List of all our git repositories
 git_repository_list() {
   find . -mindepth 2 -name .git -type d 2> /dev/null
@@ -41,10 +56,25 @@ submodule_add() {
   remote_origin=$1
   submodule_path=$2
 
-  git submodule add ${remote_origin} ${submodule_path}
+  output=$(git submodule add ${remote_origin} ${submodule_path} 2>&1)
+
+  case "${output}" in
+    *fatal:*)
+      status_error "${output}"
+      ;;
+    *already\ exists\ in\ the\ index)
+      status_ok "${output}"
+      ;;
+    Adding\ existing\ repo\ at*)
+      status_ok "${output}"
+      ;;
+    *)
+      status_error "${output}"
+      ;;
+  esac
 }
 
-echo "Adding submodules.."
+status_info "Synchronizing submodules…"
 echo
 
 git_repositories=$(git_repository_list)
@@ -54,9 +84,13 @@ for repository in ${(f)git_repositories}; do
   repository_path=${(q)repository}
   remote_origin=$(git_repository_origin ${repository_path})
 
-  echo "+ ${submodule_name}"
-  echo "  (${remote_origin})"
-  submodule_add ${(q)remote_origin} ${repository_path:h}
+  if [ -n "${remote_origin}" ]; then
+    status_info "Adding submodule ${submodule_name}…"
+    submodule_add ${(q)remote_origin} ${repository_path:h}
+  else
+    status_error "Can't add submodule ${submodule_name} (unknown origin)"
+    status_error "@ ${repository_path}"
+  fi
 done
 
-# vim: ft=sh
+# vim: ft=zsh
