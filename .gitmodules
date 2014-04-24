@@ -85,9 +85,6 @@
 [submodule "home/.config/awesome/obvious"]
 	path = home/.config/awesome/obvious
 	url = https://github.com/hoelzro/obvious
-[submodule "home/.zsh/plugins/zsh-syntax-highlighting"]
-	path = home/.zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "home/.rbenv"]
 	path = home/.rbenv
 	url = https://github.com/sstephenson/rbenv.git

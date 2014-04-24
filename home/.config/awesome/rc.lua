@@ -461,6 +461,13 @@ awful.rules.rules = {
       awful.placement.centered(c, nil)
     end 
   },
+  {
+    rule = { class = "Eupnea" },
+    properties = { floating = true },
+    callback = function(c)
+      awful.placement.centered(c, nil)
+    end 
+  },
 }
 -- }}}
 -- {{{ Run Applications

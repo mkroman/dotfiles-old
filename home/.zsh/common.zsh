@@ -43,7 +43,7 @@ bindkey "\e[F" end-of-line
 bindkey '^R' history-incremental-search-backward
 
 # Load rbenv.
-if [ -e ~/.rbenv ]; then
+if [ -e ~/.rbenv/bin/rbenv ]; then
   export PATH="${HOME}/.rbenv/bin:${PATH}"
 
   eval "$(rbenv init -)"
