@@ -92,8 +92,10 @@ set foldenable foldmethod=manual foldmarker={{{,}}}
 set fillchars=vert:\│
 
 " Set an 78-character margin
-set colorcolumn=72
-set textwidth=72
+set colorcolumn=80
+
+" Non-obnoxious wrapping
+set textwidth=80 formatoptions=cq wrapmargin=0
 
 " Return to last editing position
 autocmd BufReadPost *
