@@ -88,3 +88,6 @@
 [submodule "home/.rbenv"]
 	path = home/.rbenv
 	url = https://github.com/sstephenson/rbenv.git
+[submodule "home/.vim/bundle/vim-crystal"]
+	path = home/.vim/bundle/vim-crystal
+	url = https://github.com/rhysd/vim-crystal.git
