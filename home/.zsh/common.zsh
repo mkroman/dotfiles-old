@@ -54,6 +54,11 @@ if [ -e ~/.dircolors ]; then
   eval "$(dircolors)"
 fi
 
+# Add Crystal to the front of the pack.
+if [ -d ~/Projects/Crystal/bin ]; then
+  export PATH="${HOME}/Projects/Crystal/bin:${PATH}"
+fi
+
 # Add ~/.bin to the front of the path stack.
 if [ -d ~/.bin ]; then
   export PATH="${HOME}/.bin:${PATH}"
