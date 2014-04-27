@@ -7,8 +7,3 @@ fpath=(~/.zsh/functions $fpath)
 for file in ~/.zsh/aliases/*.zsh; do
   source $file
 done
-
-# Files in ~/.zsh/functions are lazily loaded functions.
-for file in ~/.zsh/functions/*; do
-  autoload -Uz $(basename ${file})
-done
