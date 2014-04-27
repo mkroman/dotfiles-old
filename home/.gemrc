@@ -1,1 +1,9 @@
-gem: --no-rdoc
+---
+:verbose: true
+:sources:
+  - http://gems.rubyforge.org/
+  - http://rubygems.org/
+:bulk_threshold: 5000
+gem: --no-rdoc --no-ri
+
+# vim: ft=yaml
