@@ -54,7 +54,7 @@ commands = {
 
 -- Load our theme.
 beautiful.init(themes .. "/paradoks/theme.lua")
--- beautiful.useless_gap_width = 15
+beautiful.useless_gap_width = 35
 
 -- }}}
 -- {{{ Layouts & Tags
@@ -75,7 +75,9 @@ local layouts =
   awful.layout.suit.magnifier,
   vain.layout.cascade,
   vain.layout.cascadebrowse,
-  vain.layout.browse
+  vain.layout.browse,
+  vain.layout.termfair,
+  vain.layout.uselesstile
 }
 
 local tags = {
@@ -83,10 +85,11 @@ local tags = {
   labels = { "\xE2\x8C\x98", -- “main” / ⌘
              "\xE2\x9A\x98", -- “chat” / ⚛
              "\xE2\x98\xB1", -- “code” / ☱
-             "\xE2\x99\xAC"  -- “media” / ♬
+             "\xE2\x99\xAC", -- “media” / ♬
+             "\xE2\x8C\xAC"  -- "games" / ⌬
            },
 
-  layout = { layouts[8], layouts[6], layouts[4], layouts[6] }
+  layout = { layouts[9], layouts[11], layouts[4], layouts[6], layouts[1] }
 }
 
 for s = 1, screen.count() do
@@ -231,8 +234,8 @@ globalkeys = awful.util.table.join(
       end),
 
   -- Capture screenshot
-  awful.key({ "Control", "Shift"  }, "3", function() awful.util.spawn(".bin/screencap desktop") end),
-  awful.key({ "Control", "Shift"  }, "4", function() awful.util.spawn(".bin/screencap selection") end),
+  awful.key({ "Mod1", "Shift"  }, "3", function() awful.util.spawn(".bin/screencap desktop") end),
+  awful.key({ "Mod1", "Shift"  }, "4", function() awful.util.spawn(".bin/screencap selection") end),
 
   -- Layout manipulation
   awful.key({ modifier, "Shift"   }, "Left", function () awful.client.swap.byidx(  1)    end),
@@ -468,6 +471,10 @@ awful.rules.rules = {
       awful.placement.centered(c, nil)
     end 
   },
+  {
+    rule = { class = "Steam" },
+    properties = { floating = true, tag = tags[1][5], switchtotag = true }
+  }
 }
 -- }}}
 -- {{{ Run Applications
