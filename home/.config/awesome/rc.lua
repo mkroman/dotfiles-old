@@ -276,6 +276,8 @@ globalkeys = awful.util.table.join(
 
 clientkeys = awful.util.table.join(
   awful.key({ modifier,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
+  -- Toggle floating with ⌘+⇧+f
+  awful.key({ modifier, "Shift"   }, "f",      function (c) awful.client.floating.toggle(c); c.ontop = true end),
   awful.key({ modifier, "Shift"   }, "c",      function (c) c:kill()                         end),
   awful.key({ modifier,           }, "space",  awful.layout.inc(layouts, 1)                     ),
   awful.key({ modifier, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
@@ -442,6 +444,12 @@ awful.rules.rules = {
     end
   },
   {
+    rule = { class = "Firefox" },
+    callback = function(c)
+      awful.client.movetotag(tags[mouse.screen][1], c)
+    end
+  },
+  {
     rule = { class = "MPlayer" },
     properties = { floating = true }
   },
@@ -474,6 +482,10 @@ awful.rules.rules = {
   {
     rule = { class = "Steam" },
     properties = { floating = true, tag = tags[1][5], switchtotag = true }
+  },
+  {
+    rule = { class = "Chromium", role = "pop-up" },
+    properties = { floating = true  }
   }
 }
 -- }}}
