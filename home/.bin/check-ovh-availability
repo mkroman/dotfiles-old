@@ -1,0 +1,28 @@
+#!/home/mk/.rvm/rubies/ruby-2.0.0-p247/bin/ruby
+# encoding: utf-8
+
+require 'net/http'
+require 'nokogiri'
+
+client = Net::HTTP.new 'www.ovh.co.uk', 80
+
+response = client.get '/dedicated_servers/kimsufi_2g.xml'
+
+if response.code == "200"
+  document = Nokogiri::HTML response.body
+
+  element = document.css("div.offers table")
+  column = element.css("td")[4]
+
+  if column.text == "Sold out"
+    puts "Server is sold out!"
+    exit 0
+  else
+    %x{echo "Server available" | mailx -s server mk@localhost}
+    puts "Server is not available!"
+    exit 1
+  end
+else
+  puts "Request failed"
+end
+

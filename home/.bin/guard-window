@@ -1,0 +1,3 @@
+#!/bin/bash
+
+urxvt -fn xft:DejaVu\ Sans\ Mono:pixelsize=18 -geometry 132x41+1925+5

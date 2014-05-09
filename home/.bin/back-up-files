@@ -1,0 +1,39 @@
+#!/bin/bash
+ 
+# Configuration variables
+remote_host="uplink.io"
+remote_path="~/Backups/"
+
+# Internal variabls
+name="backup_$(date +%d%m%y_%H%M%S)"
+archive="/tmp/${name}.tar.xz"
+destination="/tmp/${name}"
+ 
+echo "-> Commencing backup"
+rsync -a --filter="merge ${HOME}/.backup" --exclude "*" ${HOME}/ ${destination}
+ 
+if [[ -d ${destination} ]]; then
+  echo "--> Compressing files"
+  tar --lzma -cf ${archive} -C /tmp ${name}
+ 
+  if [ ! -e ${archive} ]; then
+    echo "!> Failed to compress archive."
+    exit 1
+  else
+    echo "--> Encrypting archive"
+    gpg2 --encrypt --sign --recipient 0xCFD3219C ${archive}
+ 
+    original_size=$(du -sh ${destination} | cut -f1)
+    archive_size=$(du -sh ${archive}.gpg | cut -f1)
+ 
+    rm -f ${archive}
+    rm -rf ${destination}
+ 
+    echo "--> Uploading a total of ${archive_size} (${original_size})"
+    scp -q ${archive}.gpg ${remote_host}:${remote_path}
+    echo "-> Backup complete"
+ 
+    rm ${archive}.gpg
+    exit 0
+  fi
+fi

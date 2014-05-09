@@ -1,0 +1,13 @@
+#!/bin/sh
+
+function update_rbenv() {
+  cd ~/.rbenv
+  git pull origin master
+
+  cd ~/.rbenv/plugins/ruby-build
+  git pull origin master
+}
+
+update_rbenv
+
+# vim: ft=zsh

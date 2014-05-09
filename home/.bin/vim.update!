@@ -1,0 +1,13 @@
+#!/bin/sh
+
+update_bundles() {
+  local VIM_ROOT="${HOME}/.vim"
+  local VIM_BUNDLES="${VIM_ROOT}/bundle"
+
+  for repo in ${VIM_BUNDLES}/*; do
+    cd $repo
+    git pull origin master
+  done
+}
+
+update_bundles

@@ -2,6 +2,10 @@
 + .config/
 + .config/awesome/***
 
+# Executables.
++ .bin/
++ .bin/***
+
 # Mimeo configuration.
 + .config/mimeo.conf
 

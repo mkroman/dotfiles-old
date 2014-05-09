@@ -1,0 +1,14 @@
+#!/bin/bash
+ 
+# Internal variabls
+name="backup_$(date +%d-%m-%y-%X)"
+destination="/tmp/${name}"
+ 
+echo "-> Commencing backup"
+rsync -a --filter="merge ${HOME}/.backup" --exclude "*" ${HOME}/ ${destination}
+ 
+if [[ -d ${destination} ]]; then
+  echo "--> Total size: $(du -sh ${destination} | cut -f1)"
+  rm -rf ${destination}
+  exit 0
+fi
