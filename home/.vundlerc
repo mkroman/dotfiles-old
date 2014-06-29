@@ -1,0 +1,73 @@
+" Use Vi iMproved
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Let Vundle manage itself
+Plugin 'gmarik/Vundle.vim'
+
+" Use golden view for good split ratios
+Plugin 'zhaocai/GoldenView.Vim'
+
+" Use for browsing tags in source files
+Plugin 'majutsushi/tagbar'
+
+" Use a.vim for alternating between header and source files
+Plugin 'vim-scripts/a.vim'
+
+" Use ctrl+p for navigating files
+Plugin 'kien/ctrlp.vim'
+
+" Use syntastic for syntax linting
+Plugin 'scrooloose/syntastic'
+
+" Use tcomment for sensible and easy comments
+Plugin 'tomtom/tcomment_vim'
+
+" Use vim-airline for a smarter status bar
+Plugin 'bling/vim-airline'
+
+" Use vim-fugitive for git features
+Plugin 'tpope/vim-fugitive'
+
+" Use vim-surround for closing parantheses, braces, etc
+Plugin 'tpope/vim-surround'
+
+" Use vim-endwise for closing scopes
+Plugin 'tpope/vim-endwise'
+
+" Use ultisnips for snippet support
+Plugin 'SirVer/ultisnips'
+
+" Use vim-snippets to add more snippets
+Plugin 'honza/vim-snippets'
+
+" Use vim-rspec for rspec integration
+Plugin 'thoughtbot/vim-rspec'
+
+" Use vim-bundler for bundler syntax highlighting
+Plugin 'tpope/vim-bundler'
+
+" Use vim-coffee-script for coffee-script syntax highlighting
+Plugin 'kchmck/vim-coffee-script'
+
+" Use vim-crystal for Crystal syntax highlighting
+Plugin 'rhysd/vim-crystal'
+
+" Use vim-markdown for markdown syntax highlighting
+Plugin 'plasticboy/vim-markdown'
+
+" Use vim-nasm for NASM syntax highlighting
+Plugin 'helino/vim-nasm'
+
+" Use vim-ruby for improved Ruby syntax highlighting
+Plugin 'vim-ruby/vim-ruby'
+
+" Use vim-slim for slim syntax highlighting
+Plugin 'slim-template/vim-slim'
+
+call vundle#end()
+
+" vim: syntax=vim

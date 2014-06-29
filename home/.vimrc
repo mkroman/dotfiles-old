@@ -1,4 +1,5 @@
-execute pathogen#infect()
+" Use Vundle
+source ~/.vundlerc
 
 " Let's have a gigantic history - we have the memory for it!
 set history=1000
@@ -169,21 +170,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 " Reload vim file
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
-" Open alternate spec/implementation file
-function! OpenAlternateFile()
-  let new_file = alternate#FindAlternate()
-
-  if new_file != 0
-    exec ':e ' . new_file
-  endif
-endfunction
-
-nnoremap <leader>a :call OpenAlternateFile()<CR>
-
 " Airline configuration.
 
 " Use patched powerline font symbols.
 let g:airline_powerline_fonts = 1
-
-" Language-specific settings.
-autocmd FileType c,cpp setlocal shiftwidth=4 softtabstop=4 noexpandtab
