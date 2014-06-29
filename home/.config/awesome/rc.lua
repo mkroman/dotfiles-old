@@ -52,6 +52,23 @@ commands = {
   editor = terminal .. " -title vim -e " .. editor
 }
 
+local ui = {}
+
+ui.system_tray = function()
+  local system_tray = wibox.widget.systray()
+  local margin = wibox.layout.margin(system_tray, 2, 7)
+
+  return margin
+end
+
+ui.clock = function()
+  -- Create a textclock widget
+  local text_clock = awful.widget.textclock("%I:%M %p")
+  local margin = wibox.layout.margin(text_clock, 2, 7)
+
+  return margin
+end
+
 -- Load our theme.
 beautiful.init(themes .. "/paradoks/theme.lua")
 beautiful.useless_gap_width = 35
@@ -99,9 +116,6 @@ end
 -- }}}
 -- {{{ Widgets
 -- {{{ Clock
-
--- Create a textclock widget
-mytextclock = awful.widget.textclock("%I:%M %p")
 
 -- }}}
 
@@ -183,27 +197,24 @@ for s = 1, screen.count() do
 
   -- Widgets that are aligned to the right
   local right_layout = wibox.layout.fixed.horizontal()
-  if s == 1 then right_layout:add(wibox.widget.systray()) end
-  right_layout:add(mytextclock)
 
-  -- Now bring it all together (with the tasklist in the middle)
+  local system_tray = wibox.widget.systray()
+
+  if s == 1 then right_layout:add(system_tray) end
+  right_layout:add(ui.clock())
+
+  -- Now bring it all together.
   local layout = wibox.layout.align.horizontal()
   layout:set_left(left_layout)
-  --layout:set_middle(tasklayout)
   layout:set_right(right_layout)
 
-  panels["top"]:set_widget(layout)
-
-  -- Create the bottom panel
-  panels["bottom"] = awful.wibox({ position = "bottom", screen = s })
-  
   -- Create a tasklist widget
   local tasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
   local task_layout = wibox.layout.constraint(tasklist, "exact", screen_width * .8)
-  local panel_layout = wibox.layout.align.horizontal()
 
-  panel_layout:set_middle(task_layout)
-  panels["bottom"]:set_widget(panel_layout)
+  layout:set_middle(task_layout)
+
+  panels["top"]:set_widget(layout)
 end
 
 -- }}}
@@ -246,7 +257,7 @@ globalkeys = awful.util.table.join(
 
   awful.key({ modifier,           }, "Return", function () awful.util.spawn(terminal) end),
   awful.key({ modifier, "Control" }, "r", awesome.restart),
-  awful.key({ modifier, "Shift"   }, "q", awesome.quit),
+  awful.key({ modifier, "Control", "Shift"   }, "q", awesome.quit),
 
   awful.key({ modifier,           }, "equal", function () awful.tag.incmwfact( 0.05)    end),
   awful.key({ modifier,           }, "minus", function () awful.tag.incmwfact(-0.05)    end),
@@ -364,8 +375,8 @@ client.connect_signal("manage", function (c, startup)
       end
   end
 
-  local titlebars_enabled = false
-  if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
+  local titlebars_enabled = true
+  if titlebars_enabled and (c.type == "normal" or c.type == "dialog") and c.class ~= "dota_linux" then
       -- buttons for the titlebar
       local buttons = awful.util.table.join(
               awful.button({ }, 1, function()
@@ -432,6 +443,30 @@ awful.rules.rules = {
                    keys = clientkeys,
                    buttons = clientbuttons }
   },
+  --- Rules that applies to games.
+  {
+    rule_any = {
+      class = {
+        "Steam"
+       },
+    },
+    properties = {
+      border_width = 0,
+      floating = true,
+      tag = tags[1][5]
+    }
+  },
+  --- Rules that applies to floating dialog windows or similar.
+  {
+    rule_any = {
+      class = {
+        "Btsync-gui"
+      }
+    },
+    properties = {
+      floating = true
+    }
+  },
   {
     rule = { class = "URxvt", name = "vim" },
     callback = move_to_coding_tag
@@ -448,6 +483,15 @@ awful.rules.rules = {
     callback = function(c)
       awful.client.movetotag(tags[mouse.screen][1], c)
     end
+  },
+  {
+    -- Flash for firefox.
+    rule = { class = "Plugin-container" },
+    properties = { floating = true, fullscreen = true },
+  },
+  { -- Dota 2.
+    rule = { class = "dota_linux" },
+    properties = { fullscreen = true, tag = tags[1][5], switchtotag = true },
   },
   {
     rule = { class = "MPlayer" },
@@ -480,10 +524,6 @@ awful.rules.rules = {
     end 
   },
   {
-    rule = { class = "Steam" },
-    properties = { floating = true, tag = tags[1][5], switchtotag = true }
-  },
-  {
     rule = { class = "Chromium", role = "pop-up" },
     properties = { floating = true  }
   }
@@ -492,4 +532,6 @@ awful.rules.rules = {
 -- {{{ Run Applications
 -- Start the composite manager.
 awful.util.spawn_with_shell("compton -cCGfF -o 0.38 -O 200 -I 200 -r 12 -D2 -m 0.88")
+--- Start btsync gui.
+awful.util.spawn_with_shell("btsync-gui")
 -- }}}

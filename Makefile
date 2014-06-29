@@ -16,9 +16,9 @@ INSTALL_HOME_DIR = "$(HOME)/test"
 ANSI_BOLD = \e[01m
 ANSI_RESET = \e[0m
 
-all: home root submodules
+all: home root
 
-install: submodules-update install-home
+install: install-home
 
 install-home:
 	@while [ -z "$$USERINPUT" ]; do \
@@ -34,12 +34,6 @@ root:
 home:
 	@mkdir -p $(REPO_HOME_DIR)
 	$(RSYNC) $(RSYNC_ARGS) --filter=". $(HOME_FILTER)" --exclude "*" "$(HOME)/" "$(REPO_HOME_DIR)"
-
-submodules:
-	./tools/mkmodules.zsh
-
-submodules-update:
-	git submodule update --init
 
 clean:
 	rm -rf $(REPO_HOME_DIR) $(REPO_ROOT_DIR)

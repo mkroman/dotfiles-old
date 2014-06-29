@@ -28,6 +28,7 @@
 - .vim/.netrwhist
 + .vim/***
 + .vimrc
++ .vundlerc
 
 # ZSH configuration.
 + .zshrc

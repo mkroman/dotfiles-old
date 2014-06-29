@@ -7,5 +7,5 @@ alias rs='rspec'
 
 # Bundle aliases
 alias b='bundle'
-alias be='bundle exec'
+alias bx='bundle exec'
 alias bi='bundle install'

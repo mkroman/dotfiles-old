@@ -63,3 +63,7 @@ fi
 if [ -d ~/.bin ]; then
   export PATH="${HOME}/.bin:${PATH}"
 fi
+
+if [ -d ~/.go ]; then
+  export GOPATH="${HOME}/.go"
+fi
